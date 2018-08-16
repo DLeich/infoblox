@@ -1,5 +1,5 @@
 ---
-- name: Infoblox - Get PTR record ID
+- name: Infoblox - Get PTR record ID 
   connection: local
   uri:
     url: "{{infoblox_url}}/record:{{infoblox_recordtype}}"
