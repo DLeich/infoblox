@@ -3,11 +3,22 @@
   connection: local
   gather_facts: false
   vars:
-    infoblox_username: 'ansible'
-    infoblox_password: 'JHZbnNTkQI2rCoCPC9bd'
-    infoblox_hostname: 'ch-ibmadc00-01.it.actelion.com'
-    infoblox_view: 'actelion'
+    infoblox_username: 'user'
+    infoblox_password: 'pass'
+    infoblox_hostname: 'infobloxfqdn'
+    infoblox_view: 'default'
   tasks:
   - include_role:
        name: infoblox
+    vars:
+      infoblox_name: 'newhost.dhconsulting.ch'
+      infoblox_ipv4addr: '1.1.1.1'
+      infoblox_recordtype: 'host'
+      infoblox_action: 'create'
 
+  - include_role:
+       name: infoblox
+    vars:
+      infoblox_name: 'newhost.dhconsulting.ch'
+      infoblox_recordtype: 'host'
+      infoblox_action: 'delete'

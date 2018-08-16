@@ -15,5 +15,3 @@
       canonical: "{{infoblox_canonical}}"
     validate_certs: no
   register: infoblox_create_result
-
-

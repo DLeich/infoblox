@@ -16,4 +16,3 @@
       - ipv4addr: "{{infoblox_ipv4addr}}"
     validate_certs: no
   register: infoblox_create_result
-
