@@ -30,26 +30,35 @@ Role Variables
   - infoblox_name
 
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    infoblox_username: 'user'
+    infoblox_password: 'pass'
+    infoblox_hostname: 'infobloxfqdn'
+    infoblox_view: 'default'
+  tasks:
+  - include_role:
+       name: infoblox
+    vars:
+      infoblox_name: 'newhost.dhconsulting.ch'
+      infoblox_ipv4addr: '1.1.1.1'
+      infoblox_recordtype: 'host'
+      infoblox_action: 'create'
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+  - include_role:
+       name: infoblox
+    vars:
+      infoblox_name: 'newhost.dhconsulting.ch'
+      infoblox_recordtype: 'host'
+      infoblox_action: 'delete'
 
 License
 -------
 
 BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
