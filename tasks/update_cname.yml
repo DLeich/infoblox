@@ -1,0 +1,30 @@
+---
+- name: Infoblox - Get CNAME record ID
+  connection: local
+  uri:
+    url: "{{infoblox_url}}/record:{{infoblox_recordtype}}"
+    method: GET
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    body: "name={{ infoblox_name }}"
+    return_content: yes
+    validate_certs: no
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+  register: infoblox_update_id 
+
+- name: Infoblox - Update CNAME Record
+  uri:
+    url: "{{infoblox_url}}/{{ infoblox_update_id.json[0]._ref }}"
+    method: PUT
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    status_code: 200,201
+    body_format: json
+    body:
+      name: "{{infoblox_name}}"
+      canonical: "{{infoblox_canonical}}"
+    validate_certs: no
+  register: infoblox_update_result

@@ -11,6 +11,7 @@
     body:
       view: "{{infoblox_view}}"
       name: "{{infoblox_name}}"
+      comment: "{{infoblox_comment}}"
       ipv4addrs:
       - ipv4addr: "{{infoblox_ipv4addr}}"
     validate_certs: no
