@@ -1,2 +1,2 @@
 ---
-# tasks file for infoblox
+- include_tasks: "{{infoblox_action}}.yml"

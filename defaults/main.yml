@@ -1,2 +1,4 @@
 ---
-# defaults file for infoblox
+infoblox_url: "https://{{infoblox_hostname}}/wapi/v2.2.2/record:{{infoblox_recordtype}}"
+infoblox_action: 'create'
+infoblox_recordtype: 'a'
