@@ -44,7 +44,7 @@ Example Playbook
     infoblox_view: 'default'
   tasks:
   - include_role:
-       name: infoblox
+       name: damhau.infoblox
     vars:
       infoblox_name: 'newhost.dhconsulting.ch'
       infoblox_ipv4addr: '1.1.1.1'
@@ -52,7 +52,7 @@ Example Playbook
       infoblox_action: 'create'
 
   - include_role:
-       name: infoblox
+       name: damhau.infoblox
     vars:
       infoblox_name: 'newhost.dhconsulting.ch'
       infoblox_recordtype: 'host'
