@@ -12,6 +12,6 @@
       view: "{{infoblox_view}}"
       name: "{{infoblox_name}}"
       ipv4addr: "{{infoblox_ipv4addr}}"
-      comment: "{{infoblox_comment}}"
+      comment: "{{infoblox_comment | default('default_value')}}"
     validate_certs: no
   register: infoblox_create_result

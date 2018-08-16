@@ -11,7 +11,7 @@
     body:
       view: "{{infoblox_view}}"
       name: "{{infoblox_name}}"
-      comment: "{{infoblox_comment}}"
+      comment: "{{infoblox_comment | default('default_value')}}"
       canonical: "{{infoblox_canonical}}"
     validate_certs: no
   register: infoblox_create_result
