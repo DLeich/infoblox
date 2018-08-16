@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
-  connection: local
   gather_facts: false
   vars:
     infoblox_username: 'ansible'
@@ -10,4 +9,7 @@
   tasks:
   - include_role:
        name: infoblox
-
+    vars:
+      infoblox_name: 'toto.it.actelion.com'
+      infoblox_action: 'delete'
+      infoblox_recordtype: 'ptr'

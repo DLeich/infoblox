@@ -1,0 +1,17 @@
+---
+- name: Infoblox - Create PTR Record
+  uri:
+    url: "{{infoblox_url}}/record:{{infoblox_recordtype}}"
+    method: POST
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    status_code: 200,201
+    body_format: json
+    body:
+      view: "{{infoblox_view}}"
+      ptrdname: "{{infoblox_name}}"
+      ipv4addr: "{{infoblox_ipv4addr}}"
+    validate_certs: no
+  register: infoblox_create_result
+  when: infoblox_recordtype == 'ptr'

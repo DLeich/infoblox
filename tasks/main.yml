@@ -1,2 +1,2 @@
 ---
-- include_tasks: "{{infoblox_action}}.yml"
+- include_tasks: "{{infoblox_action}}_{{infoblox_recordtype}}.yml"
