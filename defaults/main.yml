@@ -2,3 +2,4 @@
 infoblox_url: "https://{{infoblox_hostname}}/wapi/v2.2.2"
 infoblox_action: 'create'
 infoblox_recordtype: 'host'
+infoblox_recordtype: 'default'

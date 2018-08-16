@@ -1,17 +1,34 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Role to consume the Infoblox Rest API.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Access to the Infoblox Rest API
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- Sensible defaut are configured in defaults/main.yml for the following variables
+  - infoblox_url (the infoblox appliance url)
+  - infoblox_action (the rest api action can be: create, delete, read, update)
+  - infoblox_recordtype (the infoblox record type can be: a, ptr, host, cname)
+  - infoblox_view (the infoblox view)
+
+- Variables for Infoblox credentials
+  - infoblox_username
+  - infoblox_password
+
+- Variables for the field in the API request, the field are docummented in      
+  https://www.infoblox.com/wp-content/uploads/infoblox-deployment-infoblox-rest-api.pdf
+  The name of the field is prefixed by infoblox_
+  - infoblox_ipv4addr
+  - infoblox_comment
+  - infoblox_canonical
+  - infoblox_name
+
 
 Dependencies
 ------------
