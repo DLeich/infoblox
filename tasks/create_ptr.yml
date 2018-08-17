@@ -1,5 +1,5 @@
 ---
-- name: Infoblox - Get HOST record ID
+- name: Infoblox - Get PTR record ID
   connection: local
   uri:
     url: "{{infoblox_url}}/record:{{infoblox_recordtype}}"
@@ -7,12 +7,23 @@
     force_basic_auth: yes
     user: "{{infoblox_username}}"
     password: "{{infoblox_password}}"
-    body: "name={{ infoblox_name }}"
+    body: "ptrdname={{ infoblox_name }}"
     return_content: yes
     validate_certs: no
     headers:
       Content-Type: "application/x-www-form-urlencoded"
   register: infoblox_read_id 
+
+- name: Infoblox - Existing record delete PTR before creating 
+  connection: local
+  uri:
+    url: "{{infoblox_url}}/{{ infoblox_read_id.json[0]._ref }}"
+    method: DELETE
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    validate_certs: no
+  when: infoblox_read_id.json is defined and (infoblox_read_id.json|length>0)
 
 - name: Infoblox - Create PTR Record
   uri:
@@ -23,26 +34,7 @@
     password: "{{infoblox_password}}"
     status_code: 200,201
     body_format: json
-    body:
-      view: "{{infoblox_view}}"
-      ptrdname: "{{infoblox_name}}"
-      ipv4addr: "{{infoblox_ipv4addr}}"
-      comment: "{{infoblox_comment | default('default_value')}}"
+    body: "{{ lookup('template','create_ptr.json.j2')}}"
     validate_certs: no
   register: infoblox_create_result
-  when: infoblox_read_id.json is defined and (infoblox_read_id.json|length<1)
 
-- name: Infoblox - Update PTR Record 
-  uri:
-    url: "{{infoblox_url}}/{{ infoblox_read_id.json[0]._ref }}"
-    method: PUT
-    force_basic_auth: yes
-    user: "{{infoblox_username}}"
-    password: "{{infoblox_password}}"
-    status_code: 200,201
-    body_format: json
-    body:
-      ipv4addr: "{{infoblox_ipv4addr}}"
-    validate_certs: no
-  register: infoblox_update_result
-  when: infoblox_read_id.json is defined and (infoblox_read_id.json|length>0)

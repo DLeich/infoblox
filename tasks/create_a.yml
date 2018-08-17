@@ -23,11 +23,7 @@
     password: "{{infoblox_password}}"
     status_code: 200,201
     body_format: json
-    body:
-      view: "{{infoblox_view}}"
-      name: "{{infoblox_name}}"
-      ipv4addr: "{{infoblox_ipv4addr}}"
-      comment: "{{infoblox_comment | default('default_value')}}"
+    body: "{{ lookup('template','create_a.json.j2')}}"
     validate_certs: no
   register: infoblox_create_result
   when: infoblox_read_id.json is defined and (infoblox_read_id.json|length<1)
@@ -41,9 +37,7 @@
     password: "{{infoblox_password}}"
     status_code: 200,201
     body_format: json
-    body:
-      name: "{{infoblox_name}}"
-      ipv4addr: "{{infoblox_ipv4addr}}"
+    body: "{{ lookup('template','update_a.json.j2')}}"
     validate_certs: no
   register: infoblox_update_result
   when: infoblox_read_id.json is defined and (infoblox_read_id.json|length>0)

@@ -1,5 +1,6 @@
 ---
-infoblox_url: "https://{{infoblox_hostname}}/wapi/v2.2.2"
+infoblox_apiversion: '2.2.2'
+infoblox_url: "https://{{infoblox_hostname}}/wapi/v{{infoblox_apiversion}}"
 infoblox_action: 'create'
 infoblox_recordtype: 'host'
 infoblox_view: 'default'

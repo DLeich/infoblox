@@ -159,3 +159,32 @@
       infoblox_action: 'delete'
       infoblox_name: 'newhostc.it.actelion.com'
     tags: cname
+
+
+###### PTR ########
+
+
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'ptr'
+      infoblox_action: 'create'
+      infoblox_ipv4addr: '10.181.16.19'
+    tags: ptr
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'ptr'
+      infoblox_action: 'read'
+      infoblox_ipv4addr: '10.181.16.19'
+    tags: ptr
+
+
+#  - import_role:
+#      name: damhau.infoblox
+#    vars:
+#      infoblox_recordtype: 'ptr'
+#      infoblox_action: 'delete'
+#    tags: ptr
