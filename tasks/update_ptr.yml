@@ -12,14 +12,18 @@
     validate_certs: no
     headers:
       Content-Type: "application/x-www-form-urlencoded"
-  register: infoblox_delete_id_ptr
+  register: infoblox_update_id
 
-- name: Infoblox - Delete PTR record
-  connection: local
+- name: Infoblox - Update PTR Record 
   uri:
-    url: "{{infoblox_url}}/{{ infoblox_delete_id_ptr.json[0]._ref }}"
-    method: DELETE
+    url: "{{infoblox_url}}/{{ infoblox_update_id.json[0]._ref }}"
+    method: PUT
     force_basic_auth: yes
     user: "{{infoblox_username}}"
     password: "{{infoblox_password}}"
+    status_code: 200,201
+    body_format: json
+    body:
+      ipv4addr: "{{infoblox_ipv4addr}}"
     validate_certs: no
+  register: infoblox_update_result
