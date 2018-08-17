@@ -13,9 +13,6 @@
     headers:
       Content-Type: "application/x-www-form-urlencoded"
   register: infoblox_read_id 
-  
-- fail: msg="Record already exist. This action is to create a record, use update instead."
-  when: infoblox_read_id.json is defined and (infoblox_read_id.json|length>0)
 
 - name: Infoblox - Create A Record
   uri:
@@ -33,3 +30,20 @@
       comment: "{{infoblox_comment | default('default_value')}}"
     validate_certs: no
   register: infoblox_create_result
+  when: infoblox_read_id.json is defined and (infoblox_read_id.json|length<1)
+
+  - name: Infoblox - Update A Record 
+  uri:
+    url: "{{infoblox_url}}/{{ infoblox_update_id.json[0]._ref }}"
+    method: PUT
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    status_code: 200,201
+    body_format: json
+    body:
+      name: "{{infoblox_name}}"
+      ipv4addr: "{{infoblox_ipv4addr}}"
+    validate_certs: no
+  register: infoblox_update_result
+  when: infoblox_read_id.json is defined and (infoblox_read_id.json|length>0)
