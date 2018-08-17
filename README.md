@@ -29,6 +29,14 @@ Role Variables
   - infoblox_canonical
   - infoblox_name
 
+How to run the tests
+--------------------
+
+```
+Cd in tests/roles
+ln -s ../../../infoblox/ damhau.infoblox
+cd in tests
+ansible-playbook -i inventory test.yml -t a (you can choose a, cname, ptr, host)
 
 Example Playbook
 ----------------
