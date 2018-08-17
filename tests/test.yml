@@ -1,0 +1,64 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_prompt:
+  - name: "infoblox_hostname"
+    prompt: "Enter infoblox hostname"
+    private: no
+
+  - name: "infoblox_username"
+    prompt: "Enter infoblox username"
+    private: no
+
+  - name: "infoblox_password"
+    prompt: "Enter infoblox password"
+    private: yes
+
+  - name: "infoblox_view"
+    prompt: "Enter infoblox view name"
+    private: no
+
+  - name: "infoblox_name"
+    prompt: "Enter name of infoblox record for test"
+    private: no
+
+  - name: "infoblox_ipv4addr"
+    prompt: "Enter ip of infoblox record for test"
+    private: no
+
+  tasks:
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'a'
+      infoblox_action: 'create'
+    tags: a
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'a'
+      infoblox_action: 'read'
+    tags: a
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'a'
+      infoblox_action: 'update'
+    tags: a
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'a'
+      infoblox_action: 'read'
+    tags: a
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'a'
+      infoblox_action: 'delete'
+    tags: a
