@@ -37,6 +37,7 @@ Cd in tests/roles
 ln -s ../../../infoblox/ damhau.infoblox
 cd in tests
 ansible-playbook -i inventory test.yml -t a (you can choose a, cname, ptr, host)
+```
 
 Example Playbook
 ----------------
@@ -65,6 +66,7 @@ Example Playbook
       infoblox_name: 'newhost.dhconsulting.ch'
       infoblox_recordtype: 'host'
       infoblox_action: 'delete'
+```
 
 License
 -------
