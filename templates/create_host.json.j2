@@ -1,0 +1,13 @@
+{ "name":"{{infoblox_name}}",
+   {% if infoblox_view is defined %}"view":"{{infoblox_view}}",{% endif %}
+  {% if infoblox_comment is defined %}"comment":"{{infoblox_comment}}",{% endif %}
+  "ipv4addrs":[
+      {
+         "ipv4addr":"{{infoblox_ipv4addr}}"
+         {% if infoblox_mac is defined %}
+         ,
+         "mac":"{{infoblox_mac}}"
+         {% endif %}
+      }
+    ]
+}

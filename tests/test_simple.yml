@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_prompt:
+  vars:
+    infoblox_username: ansible
+    infoblox_password: JHZbnNTkQI2rCoCPC9bd
+    infoblox_hostname: ch-ibmadc00-01.it.actelion.com
+    infoblox_view: 'actelion'
+    infoblox_name: 'newhostc.it.actelion.com'
+    infoblox_ipv4addr: '1.1.1.1'
+
+
+  tasks:
+
+###### A ########
+
+  - import_role:
+      name: damhau.infoblox
+    vars:
+      infoblox_recordtype: 'cname'
+      infoblox_action: 'create'
+      infoblox_canonical: 'newhost.it.actelion.com'
+

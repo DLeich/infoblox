@@ -1,5 +1,5 @@
 ---
-- name: Infoblox - Get CNAME record ID
+- name: Infoblox - Get A record ID
   connection: local
   uri:
     url: "{{infoblox_url}}/record:{{infoblox_recordtype}}"
@@ -12,9 +12,9 @@
     validate_certs: no
     headers:
       Content-Type: "application/x-www-form-urlencoded"
-  register: infoblox_read_id
+  register: infoblox_read_id 
 
-- name: Infoblox - Create CNAME Record
+- name: Infoblox - Create A Record
   uri:
     url: "{{infoblox_url}}/record:{{infoblox_recordtype}}"
     method: POST
@@ -23,12 +23,16 @@
     password: "{{infoblox_password}}"
     status_code: 200,201
     body_format: json
-    body: "{{ lookup('template','create_cname.json.j2')}}"
+    body:
+      view: "{{infoblox_view}}"
+      name: "{{infoblox_name}}"
+      ipv4addr: "{{infoblox_ipv4addr}}"
+      comment: "{{infoblox_comment | default('default_value')}}"
     validate_certs: no
   register: infoblox_create_result
   when: infoblox_read_id.json is defined and (infoblox_read_id.json|length<1)
 
-- name: Infoblox - Update CNAME Record
+- name: Infoblox - Update A Record 
   uri:
     url: "{{infoblox_url}}/{{ infoblox_read_id.json[0]._ref }}"
     method: PUT
@@ -37,7 +41,9 @@
     password: "{{infoblox_password}}"
     status_code: 200,201
     body_format: json
-    body: "{{ lookup('template','update_cname.json.j2')}}"
+    body:
+      name: "{{infoblox_name}}"
+      ipv4addr: "{{infoblox_ipv4addr}}"
     validate_certs: no
   register: infoblox_update_result
   when: infoblox_read_id.json is defined and (infoblox_read_id.json|length>0)

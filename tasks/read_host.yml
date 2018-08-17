@@ -14,4 +14,4 @@
       Content-Type: "application/x-www-form-urlencoded"
   register: infoblox_read_id 
 
-- debug: msg="Record ID {{ infoblox_read_id.json[0]._ref }}"
+- debug: msg="Name {{ infoblox_read_id.json[0].name }} - ipv4addr {{ infoblox_read_id.json[0].ipv4addrs[0].ipv4addr }} - Id {{ infoblox_read_id.json[0]._ref }}"

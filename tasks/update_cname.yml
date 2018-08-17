@@ -23,8 +23,6 @@
     password: "{{infoblox_password}}"
     status_code: 200,201
     body_format: json
-    body:
-      name: "{{infoblox_name}}"
-      canonical: "{{infoblox_canonical}}"
+    body: "{{ lookup('template','update_cname.json.j2')}}"
     validate_certs: no
   register: infoblox_update_result

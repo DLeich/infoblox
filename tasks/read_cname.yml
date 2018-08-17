@@ -14,4 +14,4 @@
       Content-Type: "application/x-www-form-urlencoded"
   register: infoblox_read_id 
 
-- debug: msg="Record ID {{ infoblox_read_id.json[0]._ref }}"
+- debug: msg="Alias {{ infoblox_read_id.json[0].name }} - to {{ infoblox_read_id.json[0].canonical }} - Id {{ infoblox_read_id.json[0]._ref }}"
