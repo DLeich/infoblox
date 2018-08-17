@@ -34,7 +34,7 @@
 
   - name: Infoblox - Update CNAME Record
   uri:
-    url: "{{infoblox_url}}/{{ infoblox_update_id.json[0]._ref }}"
+    url: "{{infoblox_url}}/{{ infoblox_read_id.json[0]._ref }}"
     method: PUT
     force_basic_auth: yes
     user: "{{infoblox_username}}"

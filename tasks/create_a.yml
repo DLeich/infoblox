@@ -32,9 +32,9 @@
   register: infoblox_create_result
   when: infoblox_read_id.json is defined and (infoblox_read_id.json|length<1)
 
-  - name: Infoblox - Update A Record 
+- name: Infoblox - Update A Record 
   uri:
-    url: "{{infoblox_url}}/{{ infoblox_update_id.json[0]._ref }}"
+    url: "{{infoblox_url}}/{{ infoblox_read_id.json[0]._ref }}"
     method: PUT
     force_basic_auth: yes
     user: "{{infoblox_username}}"
