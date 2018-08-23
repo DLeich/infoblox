@@ -1,0 +1,10 @@
+{
+{% if infoblox_comment is defined %}"comment":"{{infoblox_comment}}",{% endif %}
+"network":"{{infoblox_network}}",
+"members":[
+{% for member in infoblox_network_members %}
+{"_struct": "dhcpmember","ipv4addr":"{{member.ipv4addr}}"}{% if not loop.last %},{% endif %}
+{% endfor %}
+]
+}
+

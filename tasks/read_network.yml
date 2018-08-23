@@ -1,0 +1,17 @@
+---
+- name: Infoblox - Get Network record ID
+  connection: local
+  uri:
+    url: "{{infoblox_url}}/network"
+    method: GET
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    body: "_return_fields%2B=network,members&network={{ infoblox_network }}"
+    return_content: yes
+    validate_certs: no
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+  register: infoblox_read_id 
+
+- debug: msg="network {{ infoblox_read_id.json[0].network }} - members {{ infoblox_read_id.json[0].members }} - Id {{ infoblox_read_id.json[0]._ref }}"

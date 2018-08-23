@@ -3,36 +3,30 @@
   connection: local
   gather_facts: false
   vars_prompt:
-#  - name: "infoblox_hostname"
-#    prompt: "Enter infoblox hostname"
-#    private: no
-#
-#  - name: "infoblox_username"
-#    prompt: "Enter infoblox username"
-#    private: no
-#
-#  - name: "infoblox_password"
-#    prompt: "Enter infoblox password"
-#    private: yes
-#
-#  - name: "infoblox_view"
-#    prompt: "Enter infoblox view name"
-#    private: no
-#
-#  - name: "infoblox_name"
-#    prompt: "Enter name of infoblox record for test"
-#    private: no
-#
-#  - name: "infoblox_ipv4addr"
-#    prompt: "Enter ip of infoblox record for test"
-#    private: no
-  vars:
-    infoblox_username: ansible
-    infoblox_password: JHZbnNTkQI2rCoCPC9bd
-    infoblox_hostname: ch-ibmadc00-01.it.actelion.com
-    infoblox_view: 'actelion'
-    infoblox_name: 'newhost.it.actelion.com'
-    infoblox_ipv4addr: '1.1.1.1'
+  - name: "infoblox_hostname"
+    prompt: "Enter infoblox hostname"
+    private: no
+
+  - name: "infoblox_username"
+    prompt: "Enter infoblox username"
+    private: no
+
+  - name: "infoblox_password"
+    prompt: "Enter infoblox password"
+    private: yes
+
+  - name: "infoblox_view"
+    prompt: "Enter infoblox view name"
+    private: no
+
+  - name: "infoblox_name"
+    prompt: "Enter name of infoblox record for test"
+    private: no
+
+  - name: "infoblox_ipv4addr"
+    prompt: "Enter ip of infoblox record for test"
+    private: no
+
 
   tasks:
 
@@ -182,9 +176,4 @@
     tags: ptr
 
 
-#  - import_role:
-#      name: damhau.infoblox
-#    vars:
-#      infoblox_recordtype: 'ptr'
-#      infoblox_action: 'delete'
-#    tags: ptr
+

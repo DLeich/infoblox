@@ -1,0 +1,13 @@
+---
+- name: Infoblox - Create Network
+  uri:
+    url: "{{infoblox_url}}/network"
+    method: POST
+    force_basic_auth: yes
+    user: "{{infoblox_username}}"
+    password: "{{infoblox_password}}"
+    status_code: 200,201
+    body_format: json
+    body: "{{ lookup('template','create_network.json.j2')}}"
+    validate_certs: no
+  register: infoblox_create_result
