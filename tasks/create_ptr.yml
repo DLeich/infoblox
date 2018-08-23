@@ -37,4 +37,3 @@
     body: "{{ lookup('template','create_ptr.json.j2')}}"
     validate_certs: no
   register: infoblox_create_result
-
