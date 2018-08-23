@@ -117,8 +117,8 @@
     vars:
       infoblox_recordtype: 'cname'
       infoblox_action: 'create'
-      infoblox_canonical: 'newhost.it.actelion.com'
-      infoblox_name: 'newhostc.it.actelion.com'
+      infoblox_canonical: 'newhost.dhconsulting.ch'
+      infoblox_name: 'newhostc.dhconsulting.ch'
     tags: cname
 
   - import_role:
@@ -126,7 +126,7 @@
     vars:
       infoblox_recordtype: 'cname'
       infoblox_action: 'read'
-      infoblox_name: 'newhostc.it.actelion.com'
+      infoblox_name: 'newhostc.dhconsulting.ch'
     tags: cname
 
   - import_role:
@@ -134,8 +134,8 @@
     vars:
       infoblox_recordtype: 'cname'
       infoblox_action: 'update'
-      infoblox_canonical: 'newhost99.it.actelion.com'
-      infoblox_name: 'newhostc.it.actelion.com'
+      infoblox_canonical: 'newhost99.dhconsulting.ch'
+      infoblox_name: 'newhostc.dhconsulting.ch'
     tags: cname
 
   - import_role:
@@ -143,7 +143,7 @@
     vars:
       infoblox_recordtype: 'cname'
       infoblox_action: 'read'
-      infoblox_name: 'newhostc.it.actelion.com'
+      infoblox_name: 'newhostc.dhconsulting.ch'
     tags: cname
 
   - import_role:
@@ -151,7 +151,7 @@
     vars:
       infoblox_recordtype: 'cname'
       infoblox_action: 'delete'
-      infoblox_name: 'newhostc.it.actelion.com'
+      infoblox_name: 'newhostc.dhconsulting.ch'
     tags: cname
 
 
@@ -164,7 +164,7 @@
     vars:
       infoblox_recordtype: 'ptr'
       infoblox_action: 'create'
-      infoblox_ipv4addr: '10.181.16.19'
+      infoblox_ipv4addr: '1.1.1.1'
     tags: ptr
 
   - import_role:
@@ -172,7 +172,7 @@
     vars:
       infoblox_recordtype: 'ptr'
       infoblox_action: 'read'
-      infoblox_ipv4addr: '10.181.16.19'
+      infoblox_ipv4addr: '1.1.1.1'
     tags: ptr
 
 
